@@ -26,49 +26,6 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<?php
-if (Yii::$app->user->can('admin')) {
-    $menuItems[] = ['label' => 'Пользователи', 'url' => ['/admin/users/index'],
-        'items' => [
-            ['label' => 'Регистрация', 'url' => ['/admin/users/reg']],
-            ['label' => 'Список', 'url' => ['/admin/users/index']],
-            ['label' => 'Группы', 'url' => ['/admin/auth/index']],
-            ['label' => 'Разрешения', 'url' => ['/admin/auth/permissions']],
-            ['label' => 'Заблокир. польз.', 'url' => ['/admin/users/index?status=0']],
-        ]];
-}
-
-$menuItems[] = ['label' => 'Заявки жителей', 'url' => ['#'],
-    'items' => [
-        ['label' => 'Список', 'url' => ['#']],
-    ]
-];
-
-$menuItems[] = ['label' => 'Выйти  (' . Yii::$app->user->identity['username'] . ')',
-    'url' => ['/site/logout'],
-    'linkOptions' => ['data-metod' => 'post']
-];
-?>
-
-<div id="wrapper">
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <?php
-            echo Menu::widget([
-                'items' => $menuItems,
-                'activateParents' => true,
-                'activateItems' => true,
-                'encodeLabels' => false,
-                'options' => [
-                    'class' => 'navmenu navmenu-default navmenu-fixed-left offcanvas'
-                ]
-            ]);
-            ?>
-        </ul>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">

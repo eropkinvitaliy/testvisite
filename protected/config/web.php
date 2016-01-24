@@ -13,11 +13,6 @@ $config = [
     'charset' => 'UTF-8',
     'params' => require(__DIR__ . '/params.php'),
     'bootstrap' => ['log'],
-    'modules' => [
-        'admin' => [
-            'class' => 'app\modules\admin\Module',
-        ],
-    ],
     'components' => [
         'formatter' => [
             'class' => 'yii\\i18n\\Formatter',
@@ -38,14 +33,6 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        'authManager' => [
-            'class' => 'yii\rbac\DbManager',
-        ],
-        'user' => [
-            'identityClass' => 'app\models\Users',
-            'enableAutoLogin' => true,
-            'loginUrl' => ['site/index'],
-        ],
         'request' => [
             'cookieValidationKey' => 'prokma.ru',
         ],
