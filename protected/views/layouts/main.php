@@ -21,27 +21,34 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-
 </head>
 <body>
 <?php $this->beginBody() ?>
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
+    <div class="container">
                 <div class="col-lg-12">
                     <?= $content; ?>
                 </div>
-            </div>
-        </div>
     </div>
-    <!-- /#page-content-wrapper -->
-
-</div>
 <!-- /#wrapper -->
 
 <?php $this->endBody() ?>
+
+<!--    --><? //= GridView::widget([
+//        'dataProvider' => $dataProvider,
+//        'columns' => [
+//            ['class' => 'yii\grid\SerialColumn'],
+//
+//            'numproject',
+//            'material_brus:boolean',
+//            'material_brevno:boolean',
+//            'cost',
+//            'image:image',
+//             'floor',
+//
+//            ['class' => 'yii\grid\ActionColumn'],
+//        ],
+//    ]); ?>
 
 </body>
 </html>

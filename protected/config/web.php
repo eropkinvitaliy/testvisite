@@ -21,7 +21,7 @@ $config = [
             'timeFormat' => 'medium',
             'datetimeFormat' => 'medium',
            // 'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> Не работает', '<span class="glyphicon glyphicon-ok"></span> Работает']
-            'booleanFormat' => ['Не работает', 'Работает']
+            'booleanFormat' => ['Нет', 'Да']
         ],
         'urlManager' => [
             'showScriptName' => false,

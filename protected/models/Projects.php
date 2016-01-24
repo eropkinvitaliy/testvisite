@@ -45,12 +45,12 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             'id_project' => Yii::t('app', 'Id Project'),
-            'numproject' => Yii::t('app', 'Numproject'),
-            'material_brus' => Yii::t('app', 'Material Brus'),
-            'material_brevno' => Yii::t('app', 'Material Brevno'),
-            'cost' => Yii::t('app', 'Cost'),
+            'numproject' => Yii::t('app', 'Номер проекта'),
+            'material_brus' => Yii::t('app', 'Материал брус'),
+            'material_brevno' => Yii::t('app', 'Материал бревно'),
+            'cost' => Yii::t('app', 'Цена'),
             'image' => Yii::t('app', 'Image'),
-            'floor' => Yii::t('app', 'Floor'),
+            'floor' => Yii::t('app', 'Этажность'),
         ];
     }
 

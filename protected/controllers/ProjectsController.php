@@ -4,10 +4,10 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Projects;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * ProjectsController implements the CRUD actions for Projects model.
@@ -32,12 +32,16 @@ class ProjectsController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Projects::find(),
-        ]);
-
+        $query = Projects::find();
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 4]);
+        $pages->pageSizeParam = false;
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'projects' => $models,
+            'pages' => $pages,
         ]);
     }
 
