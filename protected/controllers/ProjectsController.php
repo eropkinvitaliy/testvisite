@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\ProjectForm;
 use Yii;
 use app\models\Projects;
 use yii\web\Controller;
@@ -30,8 +31,10 @@ class ProjectsController extends Controller
      * Lists all Projects models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($clear = 0, $arrdata = [])
     {
+//        var_dump(Yii::$app->request->post());
+//        echo $clear;
         $query = Projects::find();
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 4]);
@@ -39,11 +42,14 @@ class ProjectsController extends Controller
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
+        $projectform = new ProjectForm();
         return $this->render('index', [
             'projects' => $models,
             'pages' => $pages,
+            'projectform' => $projectform
         ]);
     }
+
 
     /**
      * Displays a single Projects model.

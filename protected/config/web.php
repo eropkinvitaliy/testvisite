@@ -26,11 +26,11 @@ $config = [
         'urlManager' => [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
-            'rules' => [
-                '<module:\w+>/<controller:\w+>/<action:(\w|-)+>' => '<module>/<controller>/<action>',
-                '<module:\w+>/<controller:\w+>/<action:(\w|-)+>/<id:\d+>' => '<module>/<controller>/<action>',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-            ],
+//            'rules' => [
+//                '<module:\w+>/<controller:\w+>/<action:(\w|-)+>' => '<module>/<controller>/<action>',
+//                '<module:\w+>/<controller:\w+>/<action:(\w|-)+>/<id:\d+>' => '<module>/<controller>/<action>',
+//                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+//            ],
         ],
         'db' => require(__DIR__ . '/db.php'),
         'request' => [

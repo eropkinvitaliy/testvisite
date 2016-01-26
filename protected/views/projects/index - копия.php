@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use yii\grid\GridView;
 use yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
 
@@ -22,35 +23,38 @@ $this->params['breadcrumbs'][] = $this->title;
         'method' => 'get',
         'action' => ['index'],
     ]); ?>
+
+
+
     <div class="row col-lg-offset-1">
         <div class="col-lg-9" style="border: 1px solid green; border-radius: 10px">
             <div class="btn-group btn-group-vertical" data-toggle="buttons-radio" style="text-align: center">
-                <div><p>Цена</p></div>
+                <div><p>fffffff</p></div>
 
-                    <button type="button" class="btn btn-lg" style="margin: 2px 2px">< 1млн.
+                    <button type="button" class="btn btn-lg" style="margin: 2px 2px">w
                 <input type="radio" style="visibility: hidden" name="price" value="1">
                 </button>
 
 
-                    <button type="button" class="btn btn-lg" style="margin: 2px 2px">1 - 3млн.
+                    <button type="button" class="btn btn-lg" style="margin: 2px 2px">w
                         <input type="radio" style="visibility: hidden" name="price" value="2">
                     </button>
 
-                    <button type="button" class="btn btn-lg" style="margin: 2px 2px">> 3млн.
+                    <button type="button" class="btn btn-lg" style="margin: 2px 2px">w
                         <input type="radio" style="visibility: hidden" name="price" value="3">
                     </button>
             </div>
             <div class="btn-group btn-group-vertical" data-toggle="buttons-radio" style="text-align: center">
-                <p>Этажность</p>
-                <button type="button" class="btn btn-lg" style="margin: 2px 2px">1</button>
-                <button type="button" class="btn btn-lg" style="margin: 2px 2px">2</button>
-                <button type="button" class="btn btn-lg" style="margin: 2px 2px">3</button>
+                <p>dfgsdfg</p>
+                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Left</button>
+                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Middle</button>
+                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Right</button>
             </div>
             <div class="btn-group btn-group-vertical" data-toggle="buttons-radio" style="text-align: center">
-                <p>Материал</p>
-                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Брус</button>
-                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Бревно</button>
-                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Все проекты</button>
+                <p>dfgsdfg</p>
+                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Left</button>
+                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Middle</button>
+                <button type="button" class="btn btn-lg" style="margin: 2px 2px">Right</button>
             </div>
         </div>
     </div>
@@ -66,23 +70,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php $filteritems = Yii::$app->params['filteritems']; ?>
                 <?php foreach ($filteritems as $column => $items) : ?>
                     <div class="col-lg-2" style="display: block; padding: 5px; text-align: center">
-                                                <?php foreach ($items as $key => $value): ?>
-                                                    <?php if ('head' == $key): ?>
-                                                        <div class="col-lg-12" style="padding: 2px 5px 2px 0px">
-                                                            <p class="headfilter"><b>
-                        <?php echo $value; ?></b></p>
-                                                        </div>
-                                                    <?php endif ?>
-                                                    <?php if ('head' !== $key): ?>
-                                                        <div class="col-lg-12 btn btn-group" style="padding: 5px; border: 1px solid;">
-
-
-                                                           <a href="index"><input type="hidden" name="
-                        <?php echo $column;?>" value="<?php echo $key;?>">
-                                                            <?php echo $value; ?></a>
-                                                        </div>
-                                                    <?php endif ?>
-                                                <?php endforeach ?>
+                        <div class="btn-group btn-group-vertical" data-toggle="buttons-radio">
+                            <button type="button" class="btn">Left</button>
+                            <button type="button" class="btn">Middle</button>
+                            <button type="button" class="btn">Right</button>
+                        </div>
+                        <!--                        --><?php //foreach ($items as $key => $value): ?>
+                        <!--                            --><?php //if ('head' == $key): ?>
+                        <!--                                <div class="col-lg-12" style="padding: 2px 5px 2px 0px">-->
+                        <!--                                    <p class="headfilter"><b>-->
+                        <?php //echo $value; ?><!--</b></p>-->
+                        <!--                                </div>-->
+                        <!--                            --><?php //endif ?>
+                        <!--                            --><?php //if ('head' !== $key): ?>
+                        <!--                                <div class="col-lg-12 btn btn-group" style="padding: 5px; border: 1px solid;">-->
+                        <!---->
+                        <!---->
+                        <!--                                   <a href="index"><input type="hidden" name="-->
+                        <?php //echo $column;?><!--" value="--><?php //echo $key;?><!--">-->
+                        <!--                                    --><?php //echo $value; ?><!--</a>-->
+                        <!--                                </div>-->
+                        <!--                            --><?php //endif ?>
+                        <!--                        --><?php //endforeach ?>
                     </div>
                 <?php endforeach ?>
                 <div class="col-lg-2" style="display: flex; padding: 5px; text-align: center;">

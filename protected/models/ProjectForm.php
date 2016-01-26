@@ -15,7 +15,7 @@ use Yii;
  * @property string $image
  * @property integer $floor
  */
-class Projects extends \yii\db\ActiveRecord
+class ProjectForm extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -34,7 +34,7 @@ class Projects extends \yii\db\ActiveRecord
             [['numproject'], 'required'],
             [['numproject', 'price', 'floor'], 'integer'],
             [['material_brus', 'material_brevno'], 'boolean'],
-            [['image'], 'string']
+            [['image'], 'string', 'max' => 255]
         ];
     }
 
@@ -45,21 +45,12 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             'id_project' => Yii::t('app', 'Id Project'),
-            'numproject' => Yii::t('app', 'Номер проекта'),
-            'material_brus' => Yii::t('app', 'Материал брус'),
-            'material_brevno' => Yii::t('app', 'Материал бревно'),
-            'price' => Yii::t('app', 'Цена'),
+            'numproject' => Yii::t('app', 'Numproject'),
+            'material_brus' => Yii::t('app', 'Material Brus'),
+            'material_brevno' => Yii::t('app', 'Material Brevno'),
+            'price' => Yii::t('app', 'Price'),
             'image' => Yii::t('app', 'Image'),
-            'floor' => Yii::t('app', 'Этажность'),
+            'floor' => Yii::t('app', 'Floor'),
         ];
-    }
-
-    /**
-     * @inheritdoc
-     * @return ProjectsQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new ProjectsQuery(get_called_class());
     }
 }
