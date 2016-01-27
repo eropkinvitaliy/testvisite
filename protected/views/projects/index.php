@@ -79,17 +79,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <p style="font-size: larger" class="media-bottom">
                             от <?php echo number_format($project->price, 0, '', ' '); ?> руб.</p>
-
                         <p><?php echo $project->area . ' м2 , этажей ' . $project->floor ?></p>
-
                         <p><?php echo 'Материал: ';
-                            if ('1' == $project->material_brus) {
-                                echo ' Брус ';
-                            }
-                            if ('1' == $project->material_brevno) {
-                                echo ' Бревно ';
-                            }
-                            ?></p>
+                            if ('1' == $project->material_brus) { echo ' Брус '; }
+                            if ('1' == $project->material_brevno) { echo ' Бревно ';} ?>
+                        </p>
                     </div>
                 </div>
             </div>
