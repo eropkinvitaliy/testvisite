@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <input id="<?php echo $column . $key ?>" type="radio"
                                                    name="<?= $column ?>" value="<?php echo $key ?>"
                                                 >
-                                            <?php echo $column . $key ?>
+                                            <?php echo $value ?>
                                         </label>
                                     </div>
                                 </div>

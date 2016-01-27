@@ -40,8 +40,8 @@ class ProjectsController extends Controller
             }
             $value = 1000000;
             $query = Projects::find();
-            $query->where(['between','price', 1000000, 3000000]);
-            $query->andWhere('floor = :floor', [':floor' => 3]);
+           // $query->where(['between','price', 1000000, 3000000]);
+            $query->andWhere('floor = :floor', [':floor' => 2]);
             $query->andWhere('material_brus = :mat', [':mat' => true]);
             $pagesize = 3;
             $countQuery = clone $query;
