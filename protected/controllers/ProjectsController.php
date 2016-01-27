@@ -31,13 +31,20 @@ class ProjectsController extends Controller
      * Lists all Projects models.
      * @return mixed
      */
-    public function actionIndex($clear = 0, $arrdata = [])
+    public function actionIndex($clear = 0, $pagesize = 4)
     {
-//        var_dump(Yii::$app->request->post());
-//        echo $clear;
-        $query = Projects::find();
+        if ('on' !== $clear) {
+            $data = Yii::$app->request->get();
+            foreach ($data as $key => $value) {
+
+            }
+            $query = Projects::find();
+            $pagesize = 3;
+        }
+            $query = Projects::find();
+
         $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 4]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => $pagesize]);
         $pages->pageSizeParam = false;
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
