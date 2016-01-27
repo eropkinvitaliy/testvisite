@@ -39,7 +39,10 @@ class ProjectsController extends Controller
 
             }
             $value = 1000000;
-            $query = Projects::find()->where('price < :price', [':price' => $value]);
+            $query = Projects::find();
+            $query->where(['between','price', 1000000, 3000000]);
+            $query->andWhere('floor = :floor', [':floor' => 3]);
+            $query->andWhere('material_brus = :mat', [':mat' => true]);
             $pagesize = 3;
             $countQuery = clone $query;
             $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => $pagesize]);
@@ -47,13 +50,10 @@ class ProjectsController extends Controller
             $models = $query->offset($pages->offset)
                 ->limit($pages->limit)
                 ->all();
-
-
         } else {
             $pagesize = 4;
             $query = Projects::find();
         }
-
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => $pagesize]);
         $pages->pageSizeParam = false;
