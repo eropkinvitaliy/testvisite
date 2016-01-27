@@ -52,15 +52,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php endforeach ?>
                 <div class="col-lg-2" style="display: flex; padding: 5px; text-align: center;">
                     <div class="col-lg-12 btn btn-success btn-md" style="padding: 2px 0px 2px 0px; align-self: center;
-                    border: 1px solid; border-radius: 10px " >
+                    border: 1px solid; border-radius: 10px ">
                         <div class="radio" style="margin: 1px; padding: 1px; text-align: center">
                             <label>
                                 <input id="clear" type="radio" name="clear" value="on" style="visibility: hidden">
                                 Сбросить
                             </label>
                         </div>
-<!--                        --><?//= Html::a(Yii::t('app', 'Сбросить фильтр'),
-//                            ['index', 'clear' => 1], ['class' => 'btn btn-success btn-sm']) ?>
+                        <!--                        --><? //= Html::a(Yii::t('app', 'Сбросить фильтр'),
+                        //                            ['index', 'clear' => 1], ['class' => 'btn btn-success btn-sm']) ?>
                     </div>
                 </div>
             </div>
@@ -79,6 +79,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <p style="font-size: larger" class="media-bottom">
                             от <?php echo number_format($project->price, 0, '', ' '); ?> руб.</p>
+
+                        <p><?php echo $project->area . ' м2 , этажей ' . $project->floor ?></p>
+
+                        <p><?php echo 'Материал: ';
+                            if ('1' == $project->material_brus) {
+                                echo ' Брус ';
+                            }
+                            if ('1' == $project->material_brevno) {
+                                echo ' Бревно ';
+                            }
+                            ?></p>
                     </div>
                 </div>
             </div>

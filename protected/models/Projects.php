@@ -14,6 +14,7 @@ use Yii;
  * @property string $price
  * @property string $image
  * @property integer $floor
+ * @property float $area
  */
 class Projects extends \yii\db\ActiveRecord
 {
@@ -51,6 +52,7 @@ class Projects extends \yii\db\ActiveRecord
             'price' => Yii::t('app', 'Цена'),
             'image' => Yii::t('app', 'Image'),
             'floor' => Yii::t('app', 'Этажность'),
+            'area' => Yii::t('app', 'Площадь'),
         ];
     }
 
