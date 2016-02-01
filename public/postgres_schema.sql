@@ -18,7 +18,6 @@ Date: 2016-01-27 15:34:17
 -- ----------------------------
 -- Table structure for "projects"
 -- ----------------------------
-DROP TABLE `projects`;
 CREATE TABLE `projects` (
 `id_project` int4 NOT NULL,
 `numproject` int2 NOT NULL,
@@ -56,4 +55,4 @@ COMMIT;
 -- ----------------------------
 -- Primary Key structure for table "projects"
 -- ----------------------------
-ALTER TABLE `projects` ADD PRIMARY KEY (`id_project`);
+ALTER TABLE `projects` ADD CONSTRAINT `project_pk` PRIMARY KEY (`id_project`);

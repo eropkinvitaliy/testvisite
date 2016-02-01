@@ -8,7 +8,6 @@
 
 use yii\helpers\Html;
 use app\assets\AppAsset;
-use yii\widgets\Menu;
 
 AppAsset::register($this);
 
@@ -34,21 +33,41 @@ AppAsset::register($this);
 
 <?php $this->endBody() ?>
 
-<!--    --><? //= GridView::widget([
-//        'dataProvider' => $dataProvider,
-//        'columns' => [
-//            ['class' => 'yii\grid\SerialColumn'],
-//
-//            'numproject',
-//            'material_brus:boolean',
-//            'material_brevno:boolean',
-//            'cost',
-//            'image:image',
-//             'floor',
-//
-//            ['class' => 'yii\grid\ActionColumn'],
-//        ],
-//    ]); ?>
+
+<script type="text/javascript">
+    $(function () {
+        var pages;
+        var arr = {
+            'price': 0,
+            'area': 0,
+            'type': 0,
+            'floor': 0,
+            'material': 0,
+            'clear': 0,
+        };
+        $('.price').on('click', 'input', function () {
+            event.stopPropagation();
+            var i = $(this);
+            var v = i.val();
+            var n = i.attr('name');
+            arr['price'] = v;
+            $.post('/projects/filter', {arr: arr}, (function (data) {
+                //console.log(data);
+                var pages = JSON.parse(data);
+                console.log(pages.model);
+                $("#test").html('<a>hjhj</a>');
+                if (data.pages) {
+                    alert('На Ваш новый номер телефона отправлено SMS-сообщение с кодом подтверждения.');
+                }
+                else {
+                    alert('результата нет');
+                }
+            })).error(function () {
+                alert('Ошибка выполнения запроса');
+            })
+        })
+    });
+</script>
 
 </body>
 </html>

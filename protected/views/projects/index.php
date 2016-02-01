@@ -8,22 +8,22 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $projects \app\models\Projects */
 /* @var $pages */
-/* @var $projectform */
 
 $this->title = Yii::t('app', 'Проекты');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php Pjax::begin(); ?>
-    <div class="projects-index">
+<div class="projects-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="row col-lg-offset-1">
         <?php $form = ActiveForm::begin([
+            'id' => 'form',
             'method' => 'get',
             'action' => ['index'],
         ]); ?>
-        <div class="col-lg-9 filter">
+        <div id="filter" class="col-lg-9 filter">
             <div class="col-lg-12">
                 <?php $filteritems = Yii::$app->params['filteritems']; ?>
                 <?php foreach ($filteritems as $column => $items) : ?>
@@ -36,12 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
                             <?php endif ?>
                             <?php if ('head' !== $key): ?>
-                                <div class="col-lg-12 btn btn-group" style="padding: 5px; border: 1px solid;">
+                                <div class="col-lg-12 btn btn-group <?php echo $column; ?>"
+                                     style="padding: 5px; border: 1px solid;">
                                     <div class="radio" style="margin: 1px; padding: 1px; text-align: center">
                                         <label>
                                             <input id="<?php echo $column . $key ?>" type="radio"
-                                                   name="<?= $column ?>" value="<?php echo $key ?>"
-                                                >
+                                                   name="<?= $column ?>" value="<?php echo $key ?>">
                                             <?php echo $value ?>
                                         </label>
                                     </div>
@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php ActiveForm::end(); ?>
 
         <?php foreach ($projects as $project): ?>
-            <div class="col-lg-6" style="margin-bottom: 20px">
+            <div id="viewprojects" class="col-lg-6" style="margin-bottom: 20px">
                 <div class="media-middle" style="text-align: center; align-content: center; font-size: 21px;">
                     <div style="margin: 5px; border-bottom: 1px solid;">
                         <h2 class="media-heading">Название проекта, П-<?php echo $project->numproject; ?></h2>
@@ -79,10 +79,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <p style="font-size: larger" class="media-bottom">
                             от <?php echo number_format($project->price, 0, '', ' '); ?> руб.</p>
+
                         <p><?php echo $project->area . ' м2 , этажей ' . $project->floor ?></p>
+
                         <p><?php echo 'Материал: ';
-                            if ('1' == $project->material_brus) { echo ' Брус '; }
-                            if ('1' == $project->material_brevno) { echo ' Бревно ';} ?>
+                            if ('1' == $project->material_brus) {
+                                echo ' Брус ';
+                            }
+                            if ('1' == $project->material_brevno) {
+                                echo ' Бревно ';
+                            } ?>
                         </p>
                     </div>
                 </div>
@@ -90,9 +96,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php endforeach ?>
     </div>
 
+    <div id="test">
+
+    </div>
+    </div>
+
     <div class="col-lg-12" style="align-content: center; text-align: center">
         <?php echo LinkPager::widget([
             'pagination' => $pages,
         ]); ?>
     </div>
-<?php Pjax::end(); ?>
+    <?php Pjax::end(); ?>
