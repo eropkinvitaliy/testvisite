@@ -47,25 +47,66 @@ AppAsset::register($this);
         };
         $('.price').on('click', 'input', function () {
             event.stopPropagation();
-            var i = $(this);
-            var v = i.val();
-            var n = i.attr('name');
-            arr['price'] = v;
-            $.post('/projects/filter', {arr: arr}, (function (data) {
-                //console.log(data);
-                var pages = JSON.parse(data);
-                console.log(pages.model);
-                $("#test").html('<a>hjhj</a>');
-                if (data.pages) {
-                    alert('На Ваш новый номер телефона отправлено SMS-сообщение с кодом подтверждения.');
-                }
-                else {
-                    alert('результата нет');
-                }
+            var price = $(this);
+            arr['price'] = price.val();
+            $.get('/projects/filter', {arr: arr}, (function (data) {
+                $("#widget_filter").html(data);
             })).error(function () {
                 alert('Ошибка выполнения запроса');
             })
-        })
+        });
+        $('.area').on('click', 'input', function () {
+            event.stopPropagation();
+            var area = $(this);
+            arr['area'] = area.val();
+            $.get('/projects/filter', {arr: arr}, (function (data) {
+                $("#widget_filter").html(data);
+            })).error(function () {
+                alert('Ошибка выполнения запроса');
+            })
+        });
+        $('.type').on('click', 'input', function () {
+            event.stopPropagation();
+            var type = $(this);
+            arr['type'] = type.val();
+            $.get('/projects/filter', {arr: arr}, (function (data) {
+                $("#widget_filter").html(data);
+            })).error(function () {
+                alert('Ошибка выполнения запроса');
+            })
+        });
+        $('.floor').on('click', 'input', function () {
+            event.stopPropagation();
+            var floor = $(this);
+            arr['floor'] = floor.val();
+            $.get('/projects/filter', {arr: arr}, (function (data) {
+                $("#widget_filter").html(data);
+            })).error(function () {
+                alert('Ошибка выполнения запроса');
+            })
+        });
+        $('.material').on('click', 'input', function () {
+            event.stopPropagation();
+            var material = $(this);
+            arr['material'] = material.val();
+            $.get('/projects/filter', {arr: arr}, (function (data) {
+                $("#widget_filter").html(data);
+            })).error(function () {
+                alert('Ошибка выполнения запроса');
+            })
+        });
+        $('.clear').on('click', 'input', function () {
+            event.stopPropagation();
+            var clear = $(this);
+            arr['clear'] = clear.val();
+            $('input:radio').attr('checked', false);
+            $.get('/projects/filter', {arr: arr}, (function (data) {
+                $("#widget_filter").html(data);
+
+            })).error(function () {
+                alert('Ошибка выполнения запроса');
+            })
+        });
     });
 </script>
 

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
+use yii\base\Widget;
 
 /* @var $this yii\web\View */
 /* @var $projects \app\models\Projects */
@@ -51,59 +52,26 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 <?php endforeach ?>
                 <div class="col-lg-2" style="display: flex; padding: 5px; text-align: center;">
-                    <div class="col-lg-12 btn btn-success btn-md" style="padding: 2px 0px 2px 0px; align-self: center;
+                    <div class="col-lg-12 btn btn-success btn-md clear" style="padding: 2px 0px 2px 0px; align-self: center;
                     border: 1px solid; border-radius: 10px ">
                         <div class="radio" style="margin: 1px; padding: 1px; text-align: center">
                             <label>
-                                <input id="clear" type="radio" name="clear" value="on" style="visibility: hidden">
+                                <input type="radio" name="clear" value="on" style="visibility: hidden">
                                 Сбросить
                             </label>
                         </div>
-                        <!--                        --><? //= Html::a(Yii::t('app', 'Сбросить фильтр'),
-                        //                            ['index', 'clear' => 1], ['class' => 'btn btn-success btn-sm']) ?>
                     </div>
                 </div>
             </div>
-            <button type="submit">Ok</button>
         </div>
         <?php ActiveForm::end(); ?>
 
-        <?php foreach ($projects as $project): ?>
-            <div id="viewprojects" class="col-lg-6" style="margin-bottom: 20px">
-                <div class="media-middle" style="text-align: center; align-content: center; font-size: 21px;">
-                    <div style="margin: 5px; border-bottom: 1px solid;">
-                        <h2 class="media-heading">Название проекта, П-<?php echo $project->numproject; ?></h2>
-                        <a class="pull-top" href="#">
-                            <img class="media-object" src="<?= $project->image ?>" alt="" width="400px">
-                        </a>
-
-                        <p style="font-size: larger" class="media-bottom">
-                            от <?php echo number_format($project->price, 0, '', ' '); ?> руб.</p>
-
-                        <p><?php echo $project->area . ' м2 , этажей ' . $project->floor ?></p>
-
-                        <p><?php echo 'Материал: ';
-                            if ('1' == $project->material_brus) {
-                                echo ' Брус ';
-                            }
-                            if ('1' == $project->material_brevno) {
-                                echo ' Бревно ';
-                            } ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach ?>
-    </div>
-
-    <div id="test">
+        <div id="widget_filter">
+            <?php echo \app\widgets\Filter::widget(); ?>
+        </div>
 
     </div>
-    </div>
+</div>
 
-    <div class="col-lg-12" style="align-content: center; text-align: center">
-        <?php echo LinkPager::widget([
-            'pagination' => $pages,
-        ]); ?>
-    </div>
-    <?php Pjax::end(); ?>
+
+<?php Pjax::end(); ?>
