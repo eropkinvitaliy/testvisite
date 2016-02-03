@@ -1,10 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
 use yii\base\Widget;
+use app\widgets\Filter;
 
 /* @var $this yii\web\View */
 /* @var $projects \app\models\Projects */
@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php ActiveForm::end(); ?>
 
         <div id="widget_filter">
-            <?php echo \app\widgets\Filter::widget(); ?>
+            <?php echo  Filter::widget(); ?>
         </div>
 
     </div>

@@ -2,7 +2,6 @@
 
 namespace app\widgets;
 
-
 use yii\base\Widget;
 use Yii;
 use app\models\Projects;
